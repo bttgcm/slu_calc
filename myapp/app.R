@@ -1,5 +1,6 @@
 # Load required packages
 library(shiny)
+library(shinylive)
 library(kableExtra)
 
 # Define the UI (User Interface)
@@ -19,7 +20,6 @@ ui <- fluidPage(
       numericInput("n_target", "Nitrogen target in the soil (kg/ha)", value = 60, min = 0, max = 100)
     ),
     mainPanel(
-      h4("Results Table"),
       uiOutput("resultsTable"),
       tags$br(),
       actionButton("printBtn", "Print Table"),
@@ -30,7 +30,6 @@ ui <- fluidPage(
           newWin.document.write('<html><head><title>Print Table</title></head><body>');
           newWin.document.write(divToPrint.innerHTML);
           newWin.document.write('<p style=\"margin-top:20px; font-size:16px; color:#333;\">Add text with project link, description, credits, etc.</p>');
-          newWin.document.write('<img src=\"www\slu_logo.jpg\" alt=\"Additional Information\" style=\"margin-top:20px; width:300px;\">');
           newWin.document.write('</body></html>');
           newWin.document.close();
           newWin.print();
@@ -85,7 +84,7 @@ server <- function(input, output) {
   # Render table output using kableExtra
   output$resultsTable <- renderUI({
     result() %>%
-      kbl(caption = "Urea Dosing Calculation Results") %>%
+      kbl(caption = "<span style='font-size:24px; font-weight:bold;'>Urea Dosing Calculation Results</span>") %>%
       kable_material(c("striped", "hover"), full_width = FALSE) %>%
       kable_styling(latex_options = "striped")%>%
       column_spec(1, bold = TRUE) %>%

@@ -4,3 +4,14 @@
 4. create an app.R inside myapp folder
 5. publish app using shinylive::export(appdir = "myapp", destdir = "docs")
 6. deploy with httpuv::runStaticServer("docs/", port=8008)
+
+For git:
+git init
+git remote add origin https://github.com/bttgcm/slu_calc.git
+git branch -M main
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+
+To update files:
+
