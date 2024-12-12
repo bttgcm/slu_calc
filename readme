@@ -1,0 +1,6 @@
+1.  create quarto project
+2. install extension of shinylive quarto add quarto-ext/shinylive
+3. Add filters: shinylive in the head of R file. This ensures that the extension is run in the file.
+4. create an app.R inside myapp folder
+5. publish app using shinylive::export(appdir = "myapp", destdir = "docs")
+6. deploy with httpuv::runStaticServer("docs/", port=8008)
